@@ -1,0 +1,125 @@
+{
+	"kind": "List",
+	"id": "keycloak-config",
+	"apiVersion": "v1",
+	"name": "Keycloak",
+	"description": "Creates a Keycloak cluster",
+	"items": 
+	[
+		{
+			"kind": "Service",
+			"apiVersion": "v1",
+			"metadata": 
+			{
+				"name": "keycloak-http-service",
+				"labels": 
+				{
+					"component": "keycloak"
+				}
+			},
+
+			"spec": 
+			{
+				"ports": 
+				[
+					{
+						"port": 80,
+						"protocol": "TCP",
+						"targetPort": 8080
+					}
+				],
+
+				"selector": 
+				{
+					"component": "keycloak"
+				}
+			}
+		},
+
+		{
+			"kind": "Service",
+			"apiVersion": "v1",
+			"metadata": 
+			{
+				"name": "keycloak-https-service",
+				"labels": 
+				{
+					"component": "keycloak"
+				}
+			},
+
+			"spec": 
+			{
+				"ports": 
+				[
+					{
+						"port": 443,
+						"protocol": "TCP",
+						"targetPort": 8443
+					}
+				],
+
+				"selector": 
+				{
+					"component": "keycloak"
+				}
+			}
+		},
+
+		{
+			"kind": "ReplicationController",
+			"apiVersion": "v1",
+			"metadata": 
+			{
+				"name": "keycloak-controler",
+				"labels": 
+				{
+					"component": "keycloak"
+				}
+			},
+
+			"spec": 
+			{
+				"replicas": 1,
+				"selector": 
+				{
+					"component": "keycloak"
+				},
+
+				"template": 
+				{
+					"metadata": 
+					{
+						"labels": 
+						{
+							"component": "keycloak"
+						}
+					},
+
+					"spec": 
+					{
+						"containers": 
+						[
+							{
+								"image": "jboss/keycloak-ha-postgres",
+								"name": "keycloak-container",
+								"ports": 
+								[
+									{
+										"containerPort": 8080,
+										"name": "http"
+									},
+
+									{
+										"containerPort": 8443,
+										"name": "admin"
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		}
+	]
+}

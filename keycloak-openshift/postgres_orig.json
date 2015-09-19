@@ -1,0 +1,75 @@
+{
+	"kind": "Template",
+	"apiVersion": "v1",
+	"metadata": 
+	{
+		"name": "postgresql",
+		"annotations": 
+		{
+			"description": "PostgreSQL database service, with persistent storage, use with keycloak."
+		}
+	},
+
+	"objects": 
+	[
+		{
+			"kind": "Service",
+			"apiVersion": "v1beta3",
+			"metadata": 
+			{
+				"name": "postgres-pod",
+				"creationTimestamp": null
+			},
+
+			"spec": 
+			{
+				"ports": 
+				[
+					{
+						"name": "postgresql",
+						"protocol": "TCP",
+						"port": 5432,
+						"targetPort": 5432
+					}
+				],
+
+				"selector": 
+				{
+					"name": "postgres-pod"
+				}
+			}
+		},
+		
+		{
+            "kind": "ReplicationController",
+            "id": "postgres-controller",
+            "apiVersion": "v1",
+            "metadata": {
+               "name": "postgres-controller"
+            },
+            "spec": {
+    		   "replicas": 1,
+               "selector": "postgres-pod",
+               "containers": [
+                {
+                  "image": "postgres",
+                  "name": "postgres-container",
+                  "env": [ { "name": "POSTGRES_DATABASE", "value": "keycloak" },
+                           { "name": "POSTGRES_USER", "value": "keycloak"},
+                           { "name": "POSTGRES_PASSWORD", "value": "password"},
+                           { "name": "POSTGRES_ROOT_PASSWORD", "value": "password" }
+                         ],
+                  "ports": [ { "containerPort": 5432 }
+                           ]
+                }
+                ],
+                "volumes": null
+            },
+            "labels": {
+                 "name": "postgres-pod"
+            }
+        }
+	]
+}
+
+
