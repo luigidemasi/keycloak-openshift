@@ -1,9 +1,10 @@
 {
 	"kind": "List",
-	"id": "keycloak-config",
 	"apiVersion": "v1",
-	"name": "Keycloak",
-	"description": "Creates a Keycloak cluster",
+	"metadata" : {
+		"name": "Keycloak",
+		"description": "Creates a Keycloak cluster"
+	},
 	"items": 
 	[
 		{
