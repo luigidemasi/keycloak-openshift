@@ -6,3 +6,4 @@ This is based on the example in https://github.com/jboss-dockerfiles/keycloak/tr
 Some adjustments have been made, e.g. creating a .yaml representation of the keycloak-kube.json file 
 given in the example using apiVersion: v1.
 
+This is work in progress!
