@@ -1,4 +1,4 @@
-# create a keycloak pod and services for 
+# create a keycloak pod and services using postgres as database
 kind: Template
 apiVersion: v1
 metadata: 
