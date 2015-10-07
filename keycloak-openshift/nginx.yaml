@@ -1,0 +1,55 @@
+# create a nginx server 
+kind: Template
+apiVersion: v1
+metadata: 
+  name: nginx
+  annotations:
+    description: Creates a nginx cluster
+  
+objects: 
+- kind: Service
+  apiVersion: v1
+  metadata: 
+    name: nginx-service
+  spec: 
+    ports: 
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+    selector: 
+      app: nginx
+
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    name: nginx
+  spec:
+    replicas: 1
+    selector:
+      app: nginx
+    template:
+      metadata:
+        name: nginx
+        labels:
+          app: nginx
+      spec:
+        containers:
+        - name: nginx
+          image: nginx
+          ports:
+          - containerPort: 80
+          
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: nginx-http
+    namespace: default
+    labels:
+      server: nginx
+    
+  spec:
+    host: nginx-service.vagrant.f8
+    to:
+      kind: Service
+      name: nginx-service
+           

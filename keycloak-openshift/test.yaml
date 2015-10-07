@@ -1,0 +1,124 @@
+# create a keycloak pod and services for 
+kind: Template
+apiVersion: v1
+metadata: 
+  name: keycloak
+  annotations:
+    description: Creates a Keycloak cluster with postgres
+  
+objects:
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: postgres-service
+  spec:
+    ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432
+    selector: 
+      component: postgres
+    # portalIP: 
+    #type: ClusterIP
+    sessionAffinity: None
+ 
+- kind: Service
+  apiVersion: v1
+  metadata: 
+    name: keycloak-http-service
+    labels:
+      type: http
+  spec: 
+    ports: 
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector: 
+      component: keycloak
+
+- kind: Service
+  apiVersion: v1
+  metadata: 
+    name: keycloak-https-service
+    labels:
+      type: http
+  spec: 
+    ports: 
+    - port: 443
+      protocol: TCP
+      targetPort: 8443
+    selector: 
+      component: keycloak
+
+- kind: ReplicationController
+  apiVersion: v1
+  metadata: 
+    name: postgres-controler
+  spec: 
+    replicas: 1
+    selector: 
+      component: postgres
+    template: 
+      metadata: 
+        labels: 
+          component: postgres
+      spec: 
+        containers: 
+        - image: postgres
+          name: postgres-container
+          ports: 
+          - containerPort: 5432
+          env: 
+            - name: POSTGRES_DATABASE
+              value: keycloak
+            - name: POSTGRES_USER
+              value: keycloak
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: POSTGRES_ROOT_PASSWORD
+              value: password
+      
+      
+- kind: ReplicationController
+  apiVersion: v1
+  metadata: 
+    name: keycloak-controler
+  spec: 
+    replicas: 1
+    selector: 
+      component: keycloak
+    template: 
+      metadata: 
+        labels: 
+          component: keycloak
+      spec: 
+        containers: 
+        - image: jboss/keycloak-ha-postgres
+          name: keycloak-container
+          ports: 
+          - containerPort: 8080
+            name: http
+          - containerPort: 8443
+            name: admin
+          env:
+            - name: POSTGRES_DATABASE
+              value: keycloak
+            - name: POSTGRES_USER
+              value: keycloak
+            - name: POSTGRES_PASSWORD
+              value: password
+            
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: keycloak-http
+    namespace: default
+    labels:
+      server: keycloak
+  spec:
+    host: keycloak.vagrant.f8
+    path: "/auth" 
+    to:
+      kind: Service
+      name: keycloak-http-service
+           

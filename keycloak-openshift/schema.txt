@@ -1,0 +1,9 @@
+Nodes:
+
+
+NodeA: (2) KeyCloak
+NodeB: (1) Postgress für KeyCloak
+
+NodeC: Wildfly für Application
+NodeD: Database für Application
+
