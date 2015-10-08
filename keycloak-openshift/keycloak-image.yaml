@@ -1,0 +1,17 @@
+# create a keycloak docker image
+kind: Template
+apiVersion: v1
+metadata: 
+  name: keycloak-image
+  annotations:
+    description: Creates a Keycloak docker image
+ 
+objects:
+- kind: ImageStream
+  apiVersion: v1
+  metadata: 
+    name: my-keycloak-image
+  spec:
+    dockerImageRepository: clinte/keycloak-openshift
+
+           

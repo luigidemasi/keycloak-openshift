@@ -1,0 +1,29 @@
+# create a keycloak docker image
+kind: BuildConfig
+apiVersion: v1
+metadata: 
+  name: keycloak-build
+spec:
+#  triggers:
+#  - type: GitHub
+#    github:
+#      secret: secret101
+#  - type: Generic
+#    generic:
+#      secret: secret101 
+  source:
+    type: Git
+    git:
+      uri: https://github.com/clintea/keycloak-openshift.git 
+  strategy:
+    type: Docker
+      #sourceStrategy:
+      #  from:
+      #    kind: ImageStreamTag
+      #    name: ???
+  output:
+    to:
+      kind: ImageStreamTag
+      name: my-keycloak-build:latest
+ 
+  
