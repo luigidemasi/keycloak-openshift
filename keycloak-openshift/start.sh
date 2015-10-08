@@ -8,4 +8,13 @@ fi
 export POSTGRES_PORT_5432_TCP_ADDR
 export POSTGRES_PORT_5432_TCP_PORT
 
-exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4 -Dkeycloak.migration.action=export -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=export.json
+# use this for export
+# exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4 -Dkeycloak.migration.action=export -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=export.json
+
+# use this for import the demo realm
+exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4 \ 
+-Dkeycloak.migration.action=import \ 
+-Dkeycloak.migration.provider=singleFile \
+-Dkeycloak.migration.file=/opt/jboss/keycloak/export.json \
+-Dkeycloak.migration.realmName=demo \
+-Dkeycloak.migration.strategy=IGNORE_EXISTING

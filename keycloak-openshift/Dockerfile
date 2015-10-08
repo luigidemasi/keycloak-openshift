@@ -5,6 +5,7 @@ RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/config
 
 ADD keycloak-server.json /opt/jboss/keycloak/standalone/configuration/
 ADD start.sh /opt/jboss/keycloak/bin/
+ADD export.json /opt/jboss/keycloak
 
 USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
