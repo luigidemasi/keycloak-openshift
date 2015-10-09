@@ -1,0 +1,6 @@
+Create the objects in project default:
+oc create -f template.yaml -n default
+oc new-app keycloak
+
+Delete the kubernetes objects comprising the keycloak application:
+oc delete pods,services,rc,templates,routes -l app=keycloak-app
