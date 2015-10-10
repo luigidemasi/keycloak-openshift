@@ -22,8 +22,8 @@ objects:
       targetPort: 5432
     selector: 
       component: postgres
-    # portalIP: 
-    #type: ClusterIP
+    #portalIP: 
+    #  type: ClusterIP
     sessionAffinity: None
  
 - kind: Service
@@ -84,7 +84,6 @@ objects:
               value: password
             - name: POSTGRES_ROOT_PASSWORD
               value: password
-      
       
 - kind: ReplicationController
   apiVersion: v1
