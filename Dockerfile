@@ -11,7 +11,7 @@ ADD start.sh /opt/jboss/keycloak/bin/
 # use export.json, previously obtained from a keycloak server, for initial realm(s)
 ADD import.json /opt/jboss/keycloak/
 
-RUN echo "Parameter: $TEST_PARAM" > /opt/jboss/keycloak/dockerfile_test_parameter
+# RUN echo "Parameter: $TEST_PARAM" > /opt/jboss/keycloak/dockerfile_test_parameter
 
 USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
