@@ -9,10 +9,12 @@ RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/config
 ADD keycloak-server.json /opt/jboss/keycloak/standalone/configuration/
 ADD start.sh /opt/jboss/keycloak/bin/
 # use export.json, previously obtained from a keycloak server, for initial realm(s)
-ADD export.json /opt/jboss/keycloak/
+ADD import.json /opt/jboss/keycloak/
+
+RUN echo "Parameter: $TEST_PARAM" > /opt/jboss/keycloak/dockerfile_test_parameter
 
 USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
 USER jboss
 
-CMD ["/opt/jboss/keycloak/bin/start.sh"]
+CMD ["/opt/jboss/keycloak/bin/start.sh $TEST_PARAM]

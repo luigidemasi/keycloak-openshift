@@ -130,4 +130,9 @@ objects:
     to:
       kind: Service
       name: keycloak-http-service
+      
+parameters: 
+  - name: TEST_PARAM
+    description: For test
+    value: set in template.yaml
            
