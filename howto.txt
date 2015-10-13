@@ -4,3 +4,6 @@ oc new-app keycloak
 
 Delete the kubernetes objects comprising the keycloak application:
 oc delete pods,services,rc,templates,routes -l app=keycloak-app
+
+shutdown the wildfly server (from /opt/jboss/keycloak directory)
+bin/jboss-cli.sh --connect --command=:shutdown
