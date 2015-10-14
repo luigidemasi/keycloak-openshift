@@ -148,8 +148,8 @@ objects:
 #    tls:
 #      termination: passthrough      
 #      
-parameters: 
-  - name: TEST_PARAM
-    description: For test
-    value: set in template.yaml
+#parameters: 
+#  - name: TEST_PARAM
+#    description: For test
+#    value: set in template.yaml
            
