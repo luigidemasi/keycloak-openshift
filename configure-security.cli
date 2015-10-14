@@ -1,0 +1,15 @@
+# Batch script to add and configure the security in the JBoss server
+
+# Start batching commands
+batch
+
+# Add a new security realm
+/core-service=management/security-realm=UndertowRealm:add
+/core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks,keystore-relative-to=jboss.server.config.dir,keystore-password=secret)
+/subsystem=undertow/server=default-server/https-listener=https:add(socket-binding=https,security-realm=UndertowRealm)
+
+# Run the batch commands
+run-batch
+
+# Reload the server configuration
+:reload
