@@ -21,3 +21,6 @@ exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.nam
 -Dkeycloak.migration.file=/opt/jboss/keycloak/import.json \
 -Dkeycloak.migration.realmName=demo \
 -Dkeycloak.migration.strategy=IGNORE_EXISTING
+
+# configure SSL using self signed certificate and jboss-cli.sh
+exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=configure-security.cli

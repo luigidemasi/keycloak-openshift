@@ -7,3 +7,11 @@ oc delete pods,services,rc,templates,routes -l app=keycloak-app
 
 shutdown the wildfly server (from /opt/jboss/keycloak directory)
 bin/jboss-cli.sh --connect --command=:shutdown
+
+create self-signed certificate
+keytool -genkey -alias localhost -keyalg RSA -keystore keycloak.jks -validity 10950
+
+Wildfly einrichten für ssl mit jboss-cli.sh:
+/core-service=management/security-realm=UndertowRealm:add
+/core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks,keystore-relative-to=jboss.server.config.dir,keystore-password=secret)
+/subsystem=undertow/server=default-server/https-listener=https:add(socket-binding=https,security-realm=UndertowRealm)
