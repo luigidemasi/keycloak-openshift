@@ -9,11 +9,11 @@ RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/config
 ADD keycloak-server.json /opt/jboss/keycloak/standalone/configuration/
 ADD start.sh /opt/jboss/keycloak/bin/
 # use export.json, previously obtained from a keycloak server, for initial realm(s)
-# ADD import.json /opt/jboss/keycloak/
+ADD import.json /opt/jboss/keycloak/
 # provide a self signed certificate
-# ADD keycloak.jks /opt/jboss/keycloak/standalone/configuration/
+ADD keycloak.jks /opt/jboss/keycloak/standalone/configuration/
 # provide a cli batch file to configure ssl
-# ADD configure-security.cli	/opt/jboss/keycloak/bin/
+ADD configure-security.cli	/opt/jboss/keycloak/bin/
 
 # RUN echo "Parameter: $TEST_PARAM" > /opt/jboss/keycloak/dockerfile_test_parameter
 
