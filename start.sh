@@ -18,13 +18,14 @@ export POSTGRES_PORT_5432_TCP_PORT
 #-Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 
 # use this for import the demo realm
-# exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4
-exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4 \
--Dkeycloak.migration.action=import \
--Dkeycloak.migration.provider=singleFile \
--Dkeycloak.migration.file=/opt/jboss/keycloak/import.json \
--Dkeycloak.migration.realmName=demo \
--Dkeycloak.migration.strategy=IGNORE_EXISTING
+#exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4 \
+#-Dkeycloak.migration.action=import \
+#-Dkeycloak.migration.provider=singleFile \
+#-Dkeycloak.migration.file=/opt/jboss/keycloak/import.json \
+#-Dkeycloak.migration.realmName=demo \
+#-Dkeycloak.migration.strategy=IGNORE_EXISTING
+
+exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4
 
 # configure SSL using self signed certificate and jboss-cli.sh
 # exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=configure-security.cli
