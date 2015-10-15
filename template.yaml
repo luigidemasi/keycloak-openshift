@@ -148,6 +148,10 @@ objects:
 #    tls:
 #      termination: passthrough      
 #      
+<<<<<<< HEAD
+=======
+
+>>>>>>> https route removed
 #parameters: 
 #  - name: TEST_PARAM
 #    description: For test
