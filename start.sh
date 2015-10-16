@@ -10,7 +10,7 @@ export POSTGRES_PORT_5432_TCP_PORT
 
 # echo "Parameter: $TEST_PARAM" > /opt/jboss/keycloak/start_sh_test_parameter
 
-' the 'normal' start
+# the 'normal' start
 # exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4
 
 # use this for export
