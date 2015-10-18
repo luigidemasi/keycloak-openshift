@@ -8,8 +8,6 @@ fi
 export POSTGRES_PORT_5432_TCP_ADDR
 export POSTGRES_PORT_5432_TCP_PORT
 
-# echo "Parameter: $TEST_PARAM" > /opt/jboss/keycloak/start_sh_test_parameter
-
 # the 'normal' start
 # exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4
 
@@ -30,5 +28,3 @@ exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.nam
 
 # configure SSL using self signed certificate and jboss-cli.sh
 # exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=configure-security.cli
-
-# mal den einfachen Start von keycloak und ssl probieren

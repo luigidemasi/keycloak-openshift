@@ -214,10 +214,10 @@
     "password" : "cGxj3tu4l",
     "starttls" : "true",
     "auth" : "true",
-    "port" : "465",
-    "host" : "smtp.googlemail.com",
+    "port" : "587",
+    "host" : "smtp.gmail.com",
     "from" : "clint.eastwool@gmail.com",
-    "ssl" : "true",
+    "ssl" : "false",
     "user" : "clint.eastwool@gmail.com"
   },
   "loginTheme" : "keycloak",
