@@ -145,8 +145,8 @@ objects:
     to:
       kind: Service
       name: keycloak-https-service
-#    tls:
-#      termination: passthrough      
+    tls:
+      termination: passthrough      
 #      
 #parameters: 
 #  - name: TEST_PARAM
