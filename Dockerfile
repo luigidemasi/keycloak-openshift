@@ -10,7 +10,6 @@ USER root
 RUN yum install -y mc && yum clean all
 RUN export TERM=xterm
 USER jboss
-
 RUN export TERM=xterm
 
 ADD keycloak-server.json /opt/jboss/keycloak/standalone/configuration/

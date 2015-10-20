@@ -131,22 +131,23 @@ objects:
       kind: Service
       name: keycloak-http-service
 
-- kind: Route
-  apiVersion: v1
-  metadata:
-    name: keycloak-https
-    namespace: default
-    labels:
-      server: keycloak
-      app: keycloak-app
-  spec:
-    host: keycloak.vagrant.f8
-    path: "/auth" 
-    to:
-      kind: Service
-      name: keycloak-https-service
-    tls:
-      termination: passthrough      
+#- kind: Route
+#  apiVersion: v1
+#  metadata:
+#    name: keycloak-https
+#    namespace: default
+#    labels:
+#      server: keycloak
+#      app: keycloak-app
+#  spec:
+#    host: keycloak.vagrant.f8
+#    path: "/auth" 
+#    to:
+#      kind: Service
+#      name: keycloak-https-service
+#    tls:
+#      termination: passthrough
+      
 #      
 #parameters: 
 #  - name: TEST_PARAM
