@@ -2,15 +2,14 @@
 
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:ds="urn:jboss:domain:datasources:2.0"
-                xmlns:ispn="urn:jboss:domain:infinispan:2.0">
+                xmlns:ispn="urn:jboss:domain:infinispan:3.0">
 
     <xsl:output method="xml" indent="yes"/>
 
     <xsl:template match="//ispn:subsystem">
         <xsl:copy>
             <xsl:apply-templates select="node()|@*"/>
-                <cache-container name="keycloak" jndi-name="infinispan/Keycloak" start="EAGER">
+                <cache-container name="keycloakX" jndi-name="infinispan/KeycloakX" start="EAGER">
                     <transport lock-timeout="60001"/>
                     <invalidation-cache name="realms" mode="SYNC"/>
                     <invalidation-cache name="users" mode="SYNC"/>
