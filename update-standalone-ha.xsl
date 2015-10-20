@@ -11,7 +11,7 @@
         <xsl:copy>
             <xsl:apply-templates select="node()|@*"/>
                 <cache-container name="keycloak" jndi-name="infinispan/Keycloak" start="EAGER">
-                    <transport lock-timeout="60000"/>
+                    <transport lock-timeout="60001"/>
                     <invalidation-cache name="realms" mode="SYNC"/>
                     <invalidation-cache name="users" mode="SYNC"/>
                     <distributed-cache name="sessions" mode="SYNC" owners="1" />
