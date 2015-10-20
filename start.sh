@@ -27,4 +27,4 @@ exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.nam
 -Dkeycloak.migration.strategy=IGNORE_EXISTING
 
 # configure SSL using self signed certificate and jboss-cli.sh
-exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=/opt/jboss/keycloak/bin/configure-security.cli
+# exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=/opt/jboss/keycloak/bin/configure-security.cli
