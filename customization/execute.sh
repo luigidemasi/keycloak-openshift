@@ -1,6 +1,13 @@
 #!/bin/bash
 
-JBOSS_HOME=/opt/wildfly
+# Usage: execute.sh [WildFly mode] [configuration file]
+#
+# The default mode is 'standalone' and default configuration is based on the
+# mode. It can be 'standalone.xml' or 'domain.xml'.
+#
+# from https://github.com/goldmann/wildfly-docker-configuration/tree/master/cli
+
+JBOSS_HOME=/opt/jboss/keycloak
 JBOSS_CLI=$JBOSS_HOME/bin/jboss-cli.sh
 JBOSS_MODE=${1:-"standalone"}
 JBOSS_CONFIG=${2:-"$JBOSS_MODE.xml"}

@@ -3,8 +3,8 @@ MAINTAINER Clint Eastwool <clint.eastwool@gmail.com>
 
 # slightly modified from https://github.com/jboss-dockerfiles/keycloak/tree/master/server-ha-postgres
 
-ADD update-standalone-ha.xsl /opt/jboss/keycloak/
-RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml -xsl:/opt/jboss/keycloak/update-standalone-ha.xsl -o:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml; rm /opt/jboss/keycloak/update-standalone-ha.xsl
+# ADD update-standalone-ha.xsl /opt/jboss/keycloak/
+# RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml -xsl:/opt/jboss/keycloak/update-standalone-ha.xsl -o:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml; rm /opt/jboss/keycloak/update-standalone-ha.xsl
 
 #USER root
 #RUN yum install -y mc && yum clean all
@@ -19,7 +19,11 @@ ADD import.json /opt/jboss/keycloak/
 # provide a self signed certificate
 ADD keycloak.jks /opt/jboss/keycloak/standalone/configuration/
 # provide a cli batch file to configure ssl
-ADD configure-security.cli	/opt/jboss/keycloak/bin/
+# ADD configure-security.cli	/opt/jboss/keycloak/bin/
+
+# adjust the wildfly configuration
+ADD customization /opt/jboss/keycloak/customization/
+RUN /opt/jboss/keycloak/customization/execute.sh standalone standalone-ha.xml
 
 USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
