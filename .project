@@ -8,4 +8,11 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>standalone-ha-xslmod.xml</name>
+			<type>1</type>
+			<location>/opt/keycloak-demo/standalone/configuration/standalone-ha-xslmod.xml</location>
+		</link>
+	</linkedResources>
 </projectDescription>
