@@ -12,8 +12,10 @@ JBOSS_CLI=$JBOSS_HOME/bin/jboss-cli.sh
 JBOSS_MODE=${1:-"standalone"}
 JBOSS_CONFIG=${2:-"$JBOSS_MODE.xml"}
 
+# slightly modfied by testing for keycloak-server.war deployment
 function wait_for_server() {
-  until `$JBOSS_CLI -c "ls /deployment" &> /dev/null`; do
+  until `$JBOSS_CLI -c --command="ls /deployment" | grep -q "keycloak-server.war"`; do
+    echo "wait 1 sec..."
     sleep 1
   done
 }
@@ -23,6 +25,7 @@ $JBOSS_HOME/bin/$JBOSS_MODE.sh -c $JBOSS_CONFIG > /dev/null &
 
 echo "=> Waiting for the server to boot"
 wait_for_server
+$JBOSS_CLI -c --command="ls /deployment"
 
 echo "=> Executing the commands"
 $JBOSS_CLI -c --file=`dirname "$0"`/commands.cli
