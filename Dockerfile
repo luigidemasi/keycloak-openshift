@@ -23,10 +23,12 @@ ADD keycloak.jks /opt/jboss/keycloak/standalone/configuration/
 
 # adjust the wildfly configuration
 ADD customization /opt/jboss/keycloak/customization/
-RUN /opt/jboss/keycloak/customization/execute.sh standalone standalone-ha.xml
 
 USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
+RUN chmod 755 /opt/jboss/keycloak/customization/execute.sh; chown jboss:jboss /opt/jboss/keycloak/customization/execute.sh
 USER jboss
+
+RUN /opt/jboss/keycloak/customization/execute.sh standalone standalone-ha.xml
 
 CMD ["/opt/jboss/keycloak/bin/start.sh"]
