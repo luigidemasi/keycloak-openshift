@@ -24,7 +24,7 @@ objects:
       component: postgres
     #portalIP: 
     #  type: ClusterIP
-    sessionAffinity: None
+    # sessionAffinity: None
  
 - kind: Service
   apiVersion: v1
@@ -45,19 +45,19 @@ objects:
     selector: 
       component: keycloak
 
-- kind: Service
-  apiVersion: v1
-  metadata: 
-    name: keycloak-https-service
-    labels:
-      app: keycloak-app
-  spec: 
-    ports: 
-    - port: 443
-      protocol: TCP
-      targetPort: 8443
-    selector: 
-      component: keycloak
+#- kind: Service
+#  apiVersion: v1
+#  metadata: 
+#    name: keycloak-https-service
+#    labels:
+#      app: keycloak-app
+#  spec: 
+#    ports: 
+#    - port: 443
+#      protocol: TCP
+#      targetPort: 8443
+#    selector: 
+#      component: keycloak
 
 - kind: ReplicationController
   apiVersion: v1
