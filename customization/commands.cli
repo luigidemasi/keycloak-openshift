@@ -8,7 +8,7 @@ batch
 /core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks,keystore-relative-to=jboss.server.config.dir,keystore-password=secret)
 /subsystem=undertow/server=default-server/https-listener=https:add(socket-binding=https,security-realm=UndertowRealm)
 
-# Run the batch commands
+# Run the batch commands 
 run-batch
 
 # Reload the server configuration

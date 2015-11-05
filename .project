@@ -10,6 +10,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>keycloak-demo</name>
+			<type>2</type>
+			<location>/opt/keycloak-demo</location>
+		</link>
+		<link>
 			<name>standalone-ha-xslmod.xml</name>
 			<type>1</type>
 			<location>/opt/keycloak-demo/standalone/configuration/standalone-ha-xslmod.xml</location>

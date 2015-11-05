@@ -8,6 +8,10 @@ fi
 export POSTGRES_PORT_5432_TCP_ADDR
 export POSTGRES_PORT_5432_TCP_PORT
 
+# configure SSL using self signed certificate and jboss-cli.sh
+# exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=/opt/jboss/keycloak/bin/configure-security.cli
+# exec /opt/jboss/keycloak/customization/execute.sh /opt/jboss/keycloak standalone standalone-ha.xml
+
 # the 'normal' start
 # exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4
 
@@ -28,3 +32,6 @@ exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.nam
 
 # configure SSL using self signed certificate and jboss-cli.sh
 # exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=/opt/jboss/keycloak/bin/configure-security.cli
+# exec /opt/jboss/keycloak/customization/execute.sh /opt/jboss/keycloak standalone standalone-ha.xml
+
+

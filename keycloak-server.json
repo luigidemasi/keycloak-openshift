@@ -25,7 +25,7 @@
     "userSessions": {
         "provider" : "infinispan"
     },
-
+    
     "realmCache": {
         "provider": "infinispan"
     },
@@ -73,7 +73,7 @@
 
     "connectionsInfinispan": {
         "default" : {
-            "cacheContainer" : "java:jboss/infinispan/Keycloak"
+            "cacheContainer" : "java:comp/env/infinispan/Keycloak"
         }
     }
 }
