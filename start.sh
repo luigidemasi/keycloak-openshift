@@ -30,8 +30,16 @@ exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.nam
 -Dkeycloak.migration.realmName=demo \
 -Dkeycloak.migration.strategy=IGNORE_EXISTING
 
-# configure SSL using self signed certificate and jboss-cli.sh
-# exec /opt/jboss/keycloak/bin/jboss-cli.sh --connect --file=/opt/jboss/keycloak/bin/configure-security.cli
-# exec /opt/jboss/keycloak/customization/execute.sh /opt/jboss/keycloak standalone standalone-ha.xml
-
-
+# for modifying a local keycloak server launch configuration
+# export
+#-Djboss.socket.binding.port-offset=100 
+#-Dkeycloak.migration.action=export 
+#-Dkeycloak.migration.provider=singleFile 
+#-Dkeycloak.migration.file=/opt/jboss/keycloak/export.json 
+#-Dkeycloak.migration.strategy=OVERWRITE_EXISTING 
+# import
+#-Djboss.socket.binding.port-offset=100 
+#-Dkeycloak.migration.action=import 
+#-Dkeycloak.migration.provider=singleFile 
+#-Dkeycloak.migration.file=/opt/jboss/keycloak/import.json 
+#-Dkeycloak.migration.strategy=OVERWRITE_EXISTING 

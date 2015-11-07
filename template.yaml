@@ -24,40 +24,36 @@ objects:
       component: postgres
     #portalIP: 
     #  type: ClusterIP
-    # sessionAffinity: None
+    sessionAffinity: None
  
-- kind: Service
-  apiVersion: v1
-  metadata: 
-    name: keycloak-http-service
-    labels:
-      app: keycloak-app
-  spec: 
-    ports: 
-    - port: 80
-      name: http
-      protocol: TCP
-      targetPort: 8080
-    - port: 443
-      name: https
-      protocol: TCP
-      targetPort: 8443
-    selector: 
-      component: keycloak
-
 #- kind: Service
 #  apiVersion: v1
 #  metadata: 
-#    name: keycloak-https-service
+#    name: keycloak-http-service
 #    labels:
 #      app: keycloak-app
 #  spec: 
 #    ports: 
-#    - port: 443
+#    - port: 80
+#      name: http
 #      protocol: TCP
-#      targetPort: 8443
+#      targetPort: 8080
 #    selector: 
 #      component: keycloak
+
+- kind: Service
+  apiVersion: v1
+  metadata: 
+    name: keycloak-https-service
+    labels:
+      app: keycloak-app
+  spec: 
+    ports: 
+    - port: 443
+      protocol: TCP
+      targetPort: 8443
+    selector: 
+      component: keycloak
 
 - kind: ReplicationController
   apiVersion: v1
@@ -121,25 +117,10 @@ objects:
             - name: POSTGRES_PASSWORD
               value: password
             
-- kind: Route
-  apiVersion: v1
-  metadata:
-    name: keycloak-http
-    namespace: default
-    labels:
-      server: keycloak
-      app: keycloak-app
-  spec:
-    host: keycloak.vagrant.f8
-    path: "/auth" 
-    to:
-      kind: Service
-      name: keycloak-http-service
-
 #- kind: Route
 #  apiVersion: v1
 #  metadata:
-#    name: keycloak-https
+#    name: keycloak-http
 #    namespace: default
 #    labels:
 #      server: keycloak
@@ -149,9 +130,24 @@ objects:
 #    path: "/auth" 
 #    to:
 #      kind: Service
-#      name: keycloak-https-service
-#    tls:
-#      termination: passthrough
+#      name: keycloak-http-service
+
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: keycloak-https
+    namespace: default
+    labels:
+      server: keycloak-ssl
+      app: keycloak-app
+  spec:
+    host: keycloak.vagrant.f8
+#    path: "/auth" 
+    to:
+      kind: Service
+      name: keycloak-https-service
+    tls:
+      termination: passthrough
       
       
 #parameters: 
