@@ -15,3 +15,53 @@ Wildfly einrichten für ssl mit jboss-cli.sh:
 /core-service=management/security-realm=UndertowRealm:add
 /core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(keystore-path=keycloak.jks,keystore-relative-to=jboss.server.config.dir,keystore-password=secret)
 /subsystem=undertow/server=default-server/https-listener=https:add(socket-binding=https,security-realm=UndertowRealm)
+
+
+Java SSL Infos mit -Djavax.net.debug=SSL
+
+Selbsterstelltes Zertifikat in java cacerts importieren
+(Pfad: /usr/lib/jvm/java-8-oracle/jre/lib/security)
+zuerst aus der .jks Datei ein .pem erstellen
+
+
+
+# eine .p12 Datei aus der .jks Datei
+sudo keytool -importkeystore -srckeystore server.jks -destkeystore server.p12 -srcstoretype jks -deststoretype pkcs12
+
+# eine .pem Datei aus der .p12 Datei
+sudo openssl pkcs12 -in server.p12 -out server.pem
+
+# eine .der Datei aus der .pem Datei
+sudo openssl x509 -outform der -in server.pem -out server.der
+# in den Java store importieren
+sudo keytool -importcert -v -trustcacerts -alias server-alias -file server.der -keystore cacerts -keypass changeit -storepass changeit
+
+
+#############  eine CA #############
+siehe: https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.0/html/Web_Services_Security_Guide/files/i382664.html
+
+# Selbstsigniertes Zertifikat erstellen
+kropfj@server:$ openssl req -x509 -new -config X509CA/openssl.cnf -days 365 -out X509CA/ca/new_ca.pem -keyout X509CA/ca/new_ca_pk.pem
+
+# Schlüsselpaar erzeugen
+kropfj@server:~/KeystoreDir$ keytool -genkey -keyalg RSA -keysize 2048 -validity 365 -alias KeycloakAlias -keypass secret -keystore keycloak.jks -storepass secret
+
+# Certifizierungs Request erstellen
+kropfj@server:~/KeystoreDir$ keytool -certreq -alias KeycloakAlias -file keycloak_csr.pem -keypass secret -keystore keycloak.jks -storepass secret
+
+# Signieren
+kropfj@server:$ openssl ca -config X509CA/openssl.cnf -days 365 -in KeystoreDir/keycloak_csr.pem -out KeystoreDir/keycloak.pem
+
+# umwandeln in PEM only
+kropfj@server:~/KeystoreDir$ openssl x509 -in keycloak.pem -out keycloak.pem -outform PEM
+# zusammenstellen
+kropfj@server:~/KeystoreDir$ cat KeystoreDir/keycloak.pem  X509CA/ca/new_ca.pem > KeystoreDir/keycloak.chain
+# in keystore einbauen
+kropfj@server:~/KeystoreDir$ keytool -import -file keycloak.chain -keypass secret -keystore keycloak.jks -storepass secret
+
+
+==> in der/den Wildfly Konfigurationsdateien als Alias 'KeycloakAlias' und keycloak.jks verwenden
+==> in den Browsern das Zertifikat aus X509CA/ca/new_ca.pem installieren 
+
+
+

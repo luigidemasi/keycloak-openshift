@@ -32,14 +32,19 @@ exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.nam
 
 # for modifying a local keycloak server launch configuration
 # export
-#-Djboss.socket.binding.port-offset=100 
+#-Dxxx.jboss.socket.binding.port-offset=100 
 #-Dkeycloak.migration.action=export 
 #-Dkeycloak.migration.provider=singleFile 
 #-Dkeycloak.migration.file=/opt/jboss/keycloak/export.json 
-#-Dkeycloak.migration.strategy=OVERWRITE_EXISTING 
+#-Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+#-Dkeycloak.migration.realmName=demo 
 # import
-#-Djboss.socket.binding.port-offset=100 
+#-Dxxx.jboss.socket.binding.port-offset=100 
 #-Dkeycloak.migration.action=import 
 #-Dkeycloak.migration.provider=singleFile 
 #-Dkeycloak.migration.file=/opt/jboss/keycloak/import.json 
 #-Dkeycloak.migration.strategy=OVERWRITE_EXISTING 
+#-Dkeycloak.migration.realmName=demo 
+
+
+
