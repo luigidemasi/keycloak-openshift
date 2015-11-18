@@ -23,7 +23,7 @@ export POSTGRES_PORT_5432_TCP_PORT
 #-Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 
 # use this for import the demo realm
-exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4 \
+exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -Djavax.net.debug=SSL -b $HOSTNAME -u 230.0.0.4 \
 -Dkeycloak.migration.action=import \
 -Dkeycloak.migration.provider=singleFile \
 -Dkeycloak.migration.file=/opt/jboss/keycloak/import.json \

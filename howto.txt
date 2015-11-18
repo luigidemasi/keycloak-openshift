@@ -64,4 +64,23 @@ kropfj@server:~/KeystoreDir$ keytool -import -file keycloak.chain -keypass secre
 ==> in den Browsern das Zertifikat aus X509CA/ca/new_ca.pem installieren 
 
 
+------------------------------------------------------------------------
+
+   welche JRE läuft? 
+    
+
+ "truststore" : "${jboss.server.config.dir}/root-ca.jks",
+  "truststore-password" : "secret"
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -17,6 +17,7 @@ ADD start.sh /opt/jboss/keycloak/bin/
 ADD import.json /opt/jboss/keycloak/
 # provide a self signed certificate
 ADD keycloak.jks /opt/jboss/keycloak/standalone/configuration/
+ADD root-ca.cer /opt/jboss/keycloak/standalone/configuration/
 
 USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
