@@ -17,7 +17,8 @@ Wildfly einrichten für ssl mit jboss-cli.sh:
 /subsystem=undertow/server=default-server/https-listener=https:add(socket-binding=https,security-realm=UndertowRealm)
 
 
-Java SSL Infos mit -Djavax.net.debug=SSL
+Java SSL Infos mit -Djavax.net.debug=SSL 
+oder javax.net.debug=ALL ?
 
 Selbsterstelltes Zertifikat in java cacerts importieren
 (Pfad: /usr/lib/jvm/java-8-oracle/jre/lib/security)
