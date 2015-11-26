@@ -142,7 +142,7 @@ objects:
       app: keycloak-app
   spec:
     host: keycloak.vagrant.f8
-#    path: "/auth" 
+    path: "/auth" 
     to:
       kind: Service
       name: keycloak-https-service
