@@ -23,4 +23,6 @@ USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
 USER jboss
 
+EXPOSE 8443
+
 CMD ["/opt/jboss/keycloak/bin/start.sh"]
