@@ -117,6 +117,21 @@ objects:
             - name: POSTGRES_PASSWORD
               value: password
             
+#- kind: Route
+#  apiVersion: v1
+#  metadata:
+#    name: keycloak-http
+#    namespace: default
+#    labels:
+#      server: keycloak
+#      app: keycloak-app
+#  spec:
+#    host: keycloak.vagrant.f8
+#    path: "/auth" 
+#    to:
+#      kind: Service
+#      name: keycloak-http-service
+
 - kind: Route
   apiVersion: v1
   metadata:
@@ -124,21 +139,6 @@ objects:
     namespace: default
     labels:
       server: keycloak
-      app: keycloak-app
-  spec:
-    host: keycloak.vagrant.f8
-    path: "/auth" 
-    to:
-      kind: Service
-      name: keycloak-http-service
-
-- kind: Route
-  apiVersion: v1
-  metadata:
-    name: keycloak-https
-    namespace: default
-    labels:
-      server: keycloak-ssl
       app: keycloak-app
   spec:
     host: keycloak.vagrant.f8
@@ -203,30 +203,30 @@ objects:
         9g7Y3CQtVJDGEpQbC27/DvuPFakRcZWI4OSZR1aYjAuIdSqWa4XZPj8oVaxI
         -----END CERTIFICATE-----
       # root_ca_cer:
-      caCertificate: |-
-        -----BEGIN CERTIFICATE-----
-        MIIDvjCCAqagAwIBAgIEVks04jANBgkqhkiG9w0BAQsFADCBjzEnMCUGCSqGSIb3
-        DQEJARYYY2xpbnQuZWFzdHdvb2xAZ21haWwuY29tMQswCQYDVQQGEwJERTEPMA0G
-        A1UECAwGSGVzc2VuMQ4wDAYDVQQHDAVIYW5hdTEOMAwGA1UECgwFQ2xpbnQxFDAS
-        BgNVBAsMC0RldmVsb3BtZW50MRAwDgYDVQQDDAdyb290LWNhMB4XDTE1MTExNzE0
-        MDkxMloXDTE2MTExNzE0MDkxMlowgY8xJzAlBgkqhkiG9w0BCQEWGGNsaW50LmVh
-        c3R3b29sQGdtYWlsLmNvbTELMAkGA1UEBhMCREUxDzANBgNVBAgMBkhlc3NlbjEO
-        MAwGA1UEBwwFSGFuYXUxDjAMBgNVBAoMBUNsaW50MRQwEgYDVQQLDAtEZXZlbG9w
-        bWVudDEQMA4GA1UEAwwHcm9vdC1jYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
-        AQoCggEBAKpVONt9YzfnfCwDGsBbV5SLHPTcDdJb+7EsDeIsT7/XLe/1a2qEEOqD
-        ktoDnK3liKmpwCu7X9dlcILtnTw7bYmR3DRN5jUq53JKLZs6isHnA2+FLR2yYfde
-        dFG9yfV4L46L2PESkLyuMs5UKNWO9MCvSA9Qcl0YoW93kAChxrEtI10RX2RlVai8
-        YR+pSwvADhOYhC8Yc9qwdbdgaJlo5x7j80mQdsmbEEOGGVKKmv2kFt8+8PYlj3WE
-        CtkwXCYR/j33kkvoN9PlM3mI59RESsGwzmLSfpZtc5H0iBMgRSIfgTy/knNfUAq9
-        vkMcUF69sAWkkUwkxBFXClh83EJhTA8CAwEAAaMgMB4wDwYDVR0TAQH/BAUwAwEB
-        /zALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQELBQADggEBAFUy4l4V23riy0/ewpH7
-        K89i1s0y3g3eHCgBot0VOygmN/vlSskT4+zA/+q47IjPbunfoThm78uI8bKWUoXe
-        chEP134pWdkX9VdusfXk9KmybutPnmrokpj/G+wZjVBqVvdW2BwXOCAOVsij1t24
-        LbRF/xAFREHwbsP4aOSECRtCd1CNRIww+Hpzof6SWXJg1L0Ly0EoLPBaSsqEAWjP
-        R3uzBkSrqrdAvt7MuEqj5MnUr/tNpD4yseBvzdwPi0snZaFLtQlZTaanC53tjKj4
-        sl8OFsL5meIc8r4Zn3Bj+iCmc3KYnt4aZx4ZjlmK6JvxcLt00dlfJM+Wts1ROn5e
-        Awo=
-        -----END CERTIFICATE-----
+#      caCertificate: |-
+#        -----BEGIN CERTIFICATE-----
+#        MIIDvjCCAqagAwIBAgIEVks04jANBgkqhkiG9w0BAQsFADCBjzEnMCUGCSqGSIb3
+#        DQEJARYYY2xpbnQuZWFzdHdvb2xAZ21haWwuY29tMQswCQYDVQQGEwJERTEPMA0G
+#        A1UECAwGSGVzc2VuMQ4wDAYDVQQHDAVIYW5hdTEOMAwGA1UECgwFQ2xpbnQxFDAS
+#        BgNVBAsMC0RldmVsb3BtZW50MRAwDgYDVQQDDAdyb290LWNhMB4XDTE1MTExNzE0
+#        MDkxMloXDTE2MTExNzE0MDkxMlowgY8xJzAlBgkqhkiG9w0BCQEWGGNsaW50LmVh
+#        c3R3b29sQGdtYWlsLmNvbTELMAkGA1UEBhMCREUxDzANBgNVBAgMBkhlc3NlbjEO
+#        MAwGA1UEBwwFSGFuYXUxDjAMBgNVBAoMBUNsaW50MRQwEgYDVQQLDAtEZXZlbG9w
+#        bWVudDEQMA4GA1UEAwwHcm9vdC1jYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+#        AQoCggEBAKpVONt9YzfnfCwDGsBbV5SLHPTcDdJb+7EsDeIsT7/XLe/1a2qEEOqD
+#        ktoDnK3liKmpwCu7X9dlcILtnTw7bYmR3DRN5jUq53JKLZs6isHnA2+FLR2yYfde
+#        dFG9yfV4L46L2PESkLyuMs5UKNWO9MCvSA9Qcl0YoW93kAChxrEtI10RX2RlVai8
+#        YR+pSwvADhOYhC8Yc9qwdbdgaJlo5x7j80mQdsmbEEOGGVKKmv2kFt8+8PYlj3WE
+#        CtkwXCYR/j33kkvoN9PlM3mI59RESsGwzmLSfpZtc5H0iBMgRSIfgTy/knNfUAq9
+#        vkMcUF69sAWkkUwkxBFXClh83EJhTA8CAwEAAaMgMB4wDwYDVR0TAQH/BAUwAwEB
+#        /zALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQELBQADggEBAFUy4l4V23riy0/ewpH7
+#        K89i1s0y3g3eHCgBot0VOygmN/vlSskT4+zA/+q47IjPbunfoThm78uI8bKWUoXe
+#        chEP134pWdkX9VdusfXk9KmybutPnmrokpj/G+wZjVBqVvdW2BwXOCAOVsij1t24
+#        LbRF/xAFREHwbsP4aOSECRtCd1CNRIww+Hpzof6SWXJg1L0Ly0EoLPBaSsqEAWjP
+#        R3uzBkSrqrdAvt7MuEqj5MnUr/tNpD4yseBvzdwPi0snZaFLtQlZTaanC53tjKj4
+#        sl8OFsL5meIc8r4Zn3Bj+iCmc3KYnt4aZx4ZjlmK6JvxcLt00dlfJM+Wts1ROn5e
+#        Awo=
+#        -----END CERTIFICATE-----
       
       
       #key:           -----BEGIN PRIVATE KEY-----MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCpnpiIZ6V0HmyzOtCY8h7WQkm+VcqGUngZQCxP3AgE0dVa86KDQ5eifXIr3pLUSknOl2stvK0+73smOTKAsW7VJuqGFw6IPEiF2lou+62eeR0vSfAn+9GEvWsmNezQZ5pXLZ70mcScD2xr+2v8URDU7fRUAnqVbe1x4YPUDnFT1UPC3J2+IwHeXspyTXZ0CGop1xxNF36wj7PxOhdy7WRqc0qfzfVGSGLOwmRil0o+F+oLPA5tlumH0gtFmA8NetiJ9dT0K4k2cGkr0ppTfEfoMF4p6fIu0Tuej++a6oBb9ca8IJgW8dpP0oZuyHMALjJwfWV+nKgGT87pj7bXminTAgMBAAECggEATYp7IKCBOrxN5QGWKtVE054qKCEAHLfGv4RevYNRByMF7jZCrM9Rmq7Oas+tP+9WHmOKU7ZVXNgN7ENpmvuCN187B2Gy+wTUApz3bVMQ48lqVhvu9dhgx9XwDd/JCtzR6dipOhixkMZcQmEF1KsajrzZXS5k67r9OXpm0aJonHG44j0tN+RUIaW1JAnQ4NbMO/ib2QQLvtTJMWqTZ7SpJl0j4rXOseKngoaCbX8rbWbAqCfc5q2OB63srTpeNHCH2BVQNswG+281oQsF3J0ybjFdLVEYkplfYTVcFYmqCdKDco5awpL/Y4ZuH9xqG2rscYlF6S16FvBdtjN6EmOYQQKBgQD3KPDiMp2iRKR2H1OlVs/Mz/T/XrquN4/ciX0Owxl1B2KV+0qFpp7QgxfJsEZqXiy7vbYGL3kHqUF+0ZvwZUe1g1ooFaP7mgXE9ylrLex8/tbCy1PCnCZDetBJWJeFh8/qjjpqDgRXerh0FS/52sqb752UkeUte6UtFJWyd0YPnQKBgQCvr6zZGcKn8LtL+DShg7E5C+n5yAPFlEUE8md6JCwb/7AHSdtDiRfAmRB7w7vHOhBiVRtZzlSqP/DT3CuZXpbVkjgTTXAgGzxapooXOX78GaWGDZjwLHTQINZMjIL4eYjvEjLmdNDItOyIAiTuhJGGibZCYLDjbuRsUeyvW368LwKBgQDtLGtjFGEx+p66/zq8OX70skYO3C9VyNmTLphEFzIRnEGdXOPZNtfFjVbBYxdfMPnKOrU2YE3K7T99W9VBLV9PrjlQp9uRL+8DYI5tXEdIdx9NE+JPqJoLPQosqAfWyknZchxZ8xN1gr0IH+DG6Y5tbtWPYSVDrRgHF27DMDOZ/QKBgDc7GDDMK2jWgls4tXsNRpqzhyPyYFUt7qDGgAdi9cb7k+BGtLq/j4sJ06fE+fSA6YOwU7/g4LcBEPnZno9BsFOF+0D+OECvr0KkVodEmQoyGdpRzgG7SCHiINzB066/rm/SHdRbZwOh9TYwzmF5pbJQ+s5VTWbChucSvkDGl8obAoGASA0fMpdarCwS4f6fzTeL5mgdheRCaZ+KtiFUZzfsqK985sC9BulmVmoy9TXIm4B3SgYXKTYx8UWeZmZTWjxwlwlnL9fr0DJ8BX87nMVG7fh6UHxQEfLs6714LhW5KZBDtZg9B7QEQGPQoPg48SYFYpR+ZTT91SJgy3cTJ5fxc34=-----END PRIVATE KEY-----
