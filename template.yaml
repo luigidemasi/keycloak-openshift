@@ -148,35 +148,35 @@ objects:
       name: keycloak-https-service
     tls:
       termination: edge
-      # keycloak.pkcs8:
+      # server.pkcs8:
       key: |-
         -----BEGIN PRIVATE KEY-----
-        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCpnpiIZ6V0Hmyz
-        OtCY8h7WQkm+VcqGUngZQCxP3AgE0dVa86KDQ5eifXIr3pLUSknOl2stvK0+73sm
-        OTKAsW7VJuqGFw6IPEiF2lou+62eeR0vSfAn+9GEvWsmNezQZ5pXLZ70mcScD2xr
-        +2v8URDU7fRUAnqVbe1x4YPUDnFT1UPC3J2+IwHeXspyTXZ0CGop1xxNF36wj7Px
-        Ohdy7WRqc0qfzfVGSGLOwmRil0o+F+oLPA5tlumH0gtFmA8NetiJ9dT0K4k2cGkr
-        0ppTfEfoMF4p6fIu0Tuej++a6oBb9ca8IJgW8dpP0oZuyHMALjJwfWV+nKgGT87p
-        j7bXminTAgMBAAECggEATYp7IKCBOrxN5QGWKtVE054qKCEAHLfGv4RevYNRByMF
-        7jZCrM9Rmq7Oas+tP+9WHmOKU7ZVXNgN7ENpmvuCN187B2Gy+wTUApz3bVMQ48lq
-        Vhvu9dhgx9XwDd/JCtzR6dipOhixkMZcQmEF1KsajrzZXS5k67r9OXpm0aJonHG4
-        4j0tN+RUIaW1JAnQ4NbMO/ib2QQLvtTJMWqTZ7SpJl0j4rXOseKngoaCbX8rbWbA
-        qCfc5q2OB63srTpeNHCH2BVQNswG+281oQsF3J0ybjFdLVEYkplfYTVcFYmqCdKD
-        co5awpL/Y4ZuH9xqG2rscYlF6S16FvBdtjN6EmOYQQKBgQD3KPDiMp2iRKR2H1Ol
-        Vs/Mz/T/XrquN4/ciX0Owxl1B2KV+0qFpp7QgxfJsEZqXiy7vbYGL3kHqUF+0Zvw
-        ZUe1g1ooFaP7mgXE9ylrLex8/tbCy1PCnCZDetBJWJeFh8/qjjpqDgRXerh0FS/5
-        2sqb752UkeUte6UtFJWyd0YPnQKBgQCvr6zZGcKn8LtL+DShg7E5C+n5yAPFlEUE
-        8md6JCwb/7AHSdtDiRfAmRB7w7vHOhBiVRtZzlSqP/DT3CuZXpbVkjgTTXAgGzxa
-        pooXOX78GaWGDZjwLHTQINZMjIL4eYjvEjLmdNDItOyIAiTuhJGGibZCYLDjbuRs
-        UeyvW368LwKBgQDtLGtjFGEx+p66/zq8OX70skYO3C9VyNmTLphEFzIRnEGdXOPZ
-        NtfFjVbBYxdfMPnKOrU2YE3K7T99W9VBLV9PrjlQp9uRL+8DYI5tXEdIdx9NE+JP
-        qJoLPQosqAfWyknZchxZ8xN1gr0IH+DG6Y5tbtWPYSVDrRgHF27DMDOZ/QKBgDc7
-        GDDMK2jWgls4tXsNRpqzhyPyYFUt7qDGgAdi9cb7k+BGtLq/j4sJ06fE+fSA6YOw
-        U7/g4LcBEPnZno9BsFOF+0D+OECvr0KkVodEmQoyGdpRzgG7SCHiINzB066/rm/S
-        HdRbZwOh9TYwzmF5pbJQ+s5VTWbChucSvkDGl8obAoGASA0fMpdarCwS4f6fzTeL
-        5mgdheRCaZ+KtiFUZzfsqK985sC9BulmVmoy9TXIm4B3SgYXKTYx8UWeZmZTWjxw
-        lwlnL9fr0DJ8BX87nMVG7fh6UHxQEfLs6714LhW5KZBDtZg9B7QEQGPQoPg48SYF
-        YpR+ZTT91SJgy3cTJ5fxc34=
+        MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCcvoqmveVfzlf2
+        lMl3LQDPIH/WyY4kEmNe4S5lmS2TmnlI07cvuIBHw1JjjIN+Wp41xE5KEUbOiD5D
+        0upCskT6T8oOXEYQA3WvHp+W8L9+o18Hr32viaUkRNM2nhoeow6GAbxSrQP1Ui+l
+        kPfPH869YzN1dQgVy1XsoEODVfIhOabbp3oDSE5zM/8X/rbIBIum6H5zX/tpISAE
+        peVDlXhBwu4WQxxj9PFutkcxILmv3syFqMMhPlSyOp2ayA9a8zoJPl+W14mEVeqo
+        MKtyGD8SEm+fBFySnK+NZAKfJZZ5uMp+yr8ZDpMsNj9oQw/4sBalcp3HWHO4fzZS
+        VcCc+UEzAgMBAAECggEAN9MQ9JPbVoTaBUM2gZBwolRT036TdjtqUsdmS98DQXeZ
+        zJtCuec/IM/qzvOjfWPuxv10WKLQkgwqCOPcdQai1HeIYhbxCRECX+1LL2ns+cBb
+        vxP8coFWZJVymBg0+0ZdjNKfbN6b80pjF9eKuqT8b60eDa4xw/lYT99ATE1W4Afk
+        Cnvyuj0lGJk/bvA68ihK8gk5uog4gz3odmPdK2Vhl5ce66rJNXcOXfoz61+inq6g
+        0TGjaeZkbyT3MI1f3HU7KO5NSQ3509elNgu3r88HMQ/4oBDRyXKL1RZrNuHu7tNc
+        swt+hx1ar8xa+pKDK7L4UnuGKl/b95tzS2aJxGZAuQKBgQDzJziQDeUvz8076yqS
+        Qn8vwILd3J6v4mkHkoQfs9dCCyXSGvQHAHhGIKTnlYdeEYWjRxqZApHB8kmrFRkC
+        AKVwMMEjCmhKy+z57DTqAzH9O5Pl8zxJswx/hrK6aEQVg7hd3AcCx/torWyM0vsI
+        CjhNZU+fDiEcB4Vrf7An1IdTdwKBgQClBpfl+aTj2oLOiSYHmys2mxQ81tRjt1iJ
+        PFTG5Y9phWjiyWtkktUJ7IvzdW+XrMSsWD95hV40WARE3OpqnS9E6fHmHkKHzQvS
+        rMWWpFZ63pvTRpOYI/Gn1OryldPlC4RtZipM6Oorol32jTFUlVSzKAf2k1VCT1Xp
+        gGEI/AmXJQKBgF75DNDHfKNmKSWkPyaNrpv6N6NsztaoOpnoko7Hcear8APW30X0
+        2wWZLo/+CbemZGpYFX16UXBNsJSQUwpDMltVz7peEEpWyKL9rdVRli7xHF2O2hd3
+        RgRxmlHQ8/brUhHnJR3i+sHyKxn+Nmr3gvJIBgd8P1ZxYZ2RbD7CdnEVAoGAdEQh
+        7sAk4PeJYzQTXBaBqpY1+ussdhitwvqDjCIeGS0KCYX5KMGeYMCMlXlupsDtS7Nc
+        /SPujBha4Z13dqfJrtbYO9Wj8AORyds51nlwCF8gEAlQYUcpsaH76e+Pe3bS1TS+
+        prMOkLFzXAp77+jJ5PNWMO36ip5UnA97zhWsOBUCgYAe0AAIEDFoXYKPhox3kgQQ
+        e4rH6CkPU4cEqcBWmgQeAtGbt7yLsrgtmpVJeAMCFCF0C7dZG4L5TKPqoQsZmk3G
+        s/fex1/xzy0F1VsRY+QoqS3tXxxmW3VkJutqxMah6rjkZrf3ZIGLjbb+vNkBRjon
+        MLJ2GG9M3shaaYXVJl+w6w==
         -----END PRIVATE KEY-----
       # server.cer:
       certificate: |-
