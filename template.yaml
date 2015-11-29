@@ -145,7 +145,7 @@ objects:
 #    path: "/auth" 
     to:
       kind: Service
-      name: keycloak-https-service
+      name: keycloak-http-service
     tls:
       termination: edge
       # server.pkcs8:
