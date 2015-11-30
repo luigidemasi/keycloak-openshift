@@ -148,60 +148,63 @@ objects:
       name: keycloak-http-service
     tls:
       termination: edge
-      # server.pkcs8:
-      key: |-
-        -----BEGIN PRIVATE KEY-----
-        MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCcvoqmveVfzlf2
-        lMl3LQDPIH/WyY4kEmNe4S5lmS2TmnlI07cvuIBHw1JjjIN+Wp41xE5KEUbOiD5D
-        0upCskT6T8oOXEYQA3WvHp+W8L9+o18Hr32viaUkRNM2nhoeow6GAbxSrQP1Ui+l
-        kPfPH869YzN1dQgVy1XsoEODVfIhOabbp3oDSE5zM/8X/rbIBIum6H5zX/tpISAE
-        peVDlXhBwu4WQxxj9PFutkcxILmv3syFqMMhPlSyOp2ayA9a8zoJPl+W14mEVeqo
-        MKtyGD8SEm+fBFySnK+NZAKfJZZ5uMp+yr8ZDpMsNj9oQw/4sBalcp3HWHO4fzZS
-        VcCc+UEzAgMBAAECggEAN9MQ9JPbVoTaBUM2gZBwolRT036TdjtqUsdmS98DQXeZ
-        zJtCuec/IM/qzvOjfWPuxv10WKLQkgwqCOPcdQai1HeIYhbxCRECX+1LL2ns+cBb
-        vxP8coFWZJVymBg0+0ZdjNKfbN6b80pjF9eKuqT8b60eDa4xw/lYT99ATE1W4Afk
-        Cnvyuj0lGJk/bvA68ihK8gk5uog4gz3odmPdK2Vhl5ce66rJNXcOXfoz61+inq6g
-        0TGjaeZkbyT3MI1f3HU7KO5NSQ3509elNgu3r88HMQ/4oBDRyXKL1RZrNuHu7tNc
-        swt+hx1ar8xa+pKDK7L4UnuGKl/b95tzS2aJxGZAuQKBgQDzJziQDeUvz8076yqS
-        Qn8vwILd3J6v4mkHkoQfs9dCCyXSGvQHAHhGIKTnlYdeEYWjRxqZApHB8kmrFRkC
-        AKVwMMEjCmhKy+z57DTqAzH9O5Pl8zxJswx/hrK6aEQVg7hd3AcCx/torWyM0vsI
-        CjhNZU+fDiEcB4Vrf7An1IdTdwKBgQClBpfl+aTj2oLOiSYHmys2mxQ81tRjt1iJ
-        PFTG5Y9phWjiyWtkktUJ7IvzdW+XrMSsWD95hV40WARE3OpqnS9E6fHmHkKHzQvS
-        rMWWpFZ63pvTRpOYI/Gn1OryldPlC4RtZipM6Oorol32jTFUlVSzKAf2k1VCT1Xp
-        gGEI/AmXJQKBgF75DNDHfKNmKSWkPyaNrpv6N6NsztaoOpnoko7Hcear8APW30X0
-        2wWZLo/+CbemZGpYFX16UXBNsJSQUwpDMltVz7peEEpWyKL9rdVRli7xHF2O2hd3
-        RgRxmlHQ8/brUhHnJR3i+sHyKxn+Nmr3gvJIBgd8P1ZxYZ2RbD7CdnEVAoGAdEQh
-        7sAk4PeJYzQTXBaBqpY1+ussdhitwvqDjCIeGS0KCYX5KMGeYMCMlXlupsDtS7Nc
-        /SPujBha4Z13dqfJrtbYO9Wj8AORyds51nlwCF8gEAlQYUcpsaH76e+Pe3bS1TS+
-        prMOkLFzXAp77+jJ5PNWMO36ip5UnA97zhWsOBUCgYAe0AAIEDFoXYKPhox3kgQQ
-        e4rH6CkPU4cEqcBWmgQeAtGbt7yLsrgtmpVJeAMCFCF0C7dZG4L5TKPqoQsZmk3G
-        s/fex1/xzy0F1VsRY+QoqS3tXxxmW3VkJutqxMah6rjkZrf3ZIGLjbb+vNkBRjon
-        MLJ2GG9M3shaaYXVJl+w6w==
-        -----END PRIVATE KEY-----
-      # server.cer:
-      certificate: |-
+      # keycloak.key:
+      key: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIEowIBAAKCAQEAqZ6YiGeldB5sszrQmPIe1kJJvlXKhlJ4GUAsT9wIBNHVWvOi
+        g0OXon1yK96S1EpJzpdrLbytPu97JjkygLFu1SbqhhcOiDxIhdpaLvutnnkdL0nw
+        J/vRhL1rJjXs0GeaVy2e9JnEnA9sa/tr/FEQ1O30VAJ6lW3tceGD1A5xU9VDwtyd
+        viMB3l7Kck12dAhqKdccTRd+sI+z8ToXcu1kanNKn831RkhizsJkYpdKPhfqCzwO
+        bZbph9ILRZgPDXrYifXU9CuJNnBpK9KaU3xH6DBeKenyLtE7no/vmuqAW/XGvCCY
+        FvHaT9KGbshzAC4ycH1lfpyoBk/O6Y+215op0wIDAQABAoIBAE2KeyCggTq8TeUB
+        lirVRNOeKighABy3xr+EXr2DUQcjBe42QqzPUZquzmrPrT/vVh5jilO2VVzYDexD
+        aZr7gjdfOwdhsvsE1AKc921TEOPJalYb7vXYYMfV8A3fyQrc0enYqToYsZDGXEJh
+        BdSrGo682V0uZOu6/Tl6ZtGiaJxxuOI9LTfkVCGltSQJ0ODWzDv4m9kEC77UyTFq
+        k2e0qSZdI+K1zrHip4KGgm1/K21mwKgn3Oatjget7K06XjRwh9gVUDbMBvtvNaEL
+        BdydMm4xXS1RGJKZX2E1XBWJqgnSg3KOWsKS/2OGbh/cahtq7HGJRektehbwXbYz
+        ehJjmEECgYEA9yjw4jKdokSkdh9TpVbPzM/0/166rjeP3Il9DsMZdQdilftKhaae
+        0IMXybBGal4su722Bi95B6lBftGb8GVHtYNaKBWj+5oFxPcpay3sfP7WwstTwpwm
+        Q3rQSViXhYfP6o46ag4EV3q4dBUv+drKm++dlJHlLXulLRSVsndGD50CgYEAr6+s
+        2RnCp/C7S/g0oYOxOQvp+cgDxZRFBPJneiQsG/+wB0nbQ4kXwJkQe8O7xzoQYlUb
+        Wc5Uqj/w09wrmV6W1ZI4E01wIBs8WqaKFzl+/Bmlhg2Y8Cx00CDWTIyC+HmI7xIy
+        5nTQyLTsiAIk7oSRhom2QmCw427kbFHsr1t+vC8CgYEA7SxrYxRhMfqeuv86vDl+
+        9LJGDtwvVcjZky6YRBcyEZxBnVzj2TbXxY1WwWMXXzD5yjq1NmBNyu0/fVvVQS1f
+        T645UKfbkS/vA2CObVxHSHcfTRPiT6iaCz0KLKgH1spJ2XIcWfMTdYK9CB/gxumO
+        bW7Vj2ElQ60YBxduwzAzmf0CgYA3OxgwzCto1oJbOLV7DUaas4cj8mBVLe6gxoAH
+        YvXG+5PgRrS6v4+LCdOnxPn0gOmDsFO/4OC3ARD52Z6PQbBThftA/jhAr69CpFaH
+        RJkKMhnaUc4Bu0gh4iDcwdOuv65v0h3UW2cDofU2MM5heaWyUPrOVU1mwobnEr5A
+        xpfKGwKBgEgNHzKXWqwsEuH+n803i+ZoHYXkQmmfirYhVGc37KivfObAvQbpZlZq
+        MvU1yJuAd0oGFyk2MfFFnmZmU1o8cJcJZy/X69AyfAV/O5zFRu34elB8UBHy7Ou9
+        eC4VuSmQQ7WYPQe0BEBj0KD4OPEmBWKUfmU0/dUiYMt3EyeX8XN+
+        -----END RSA PRIVATE KEY-----
+
+      # keycloak_clint_ca_.cer:
+      certificate: |
         -----BEGIN CERTIFICATE-----
-        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
+        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
-        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
+        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
-        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
+        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
+        /RDYTUv21fc3HZ8SIYW0ZK2j+GKpJRny1w==
         -----END CERTIFICATE-----
+      
+      
       # root_ca_cer:
 #      caCertificate: |-
 #        -----BEGIN CERTIFICATE-----
