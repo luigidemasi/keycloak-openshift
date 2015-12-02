@@ -148,6 +148,7 @@ objects:
       name: keycloak-http-service
     tls:
       termination: edge
+      insecureEdgeTerminationPolicy: Redirect 
       # keycloak.key:
       key: |
         -----BEGIN RSA PRIVATE KEY-----
