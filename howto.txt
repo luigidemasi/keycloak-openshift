@@ -73,6 +73,19 @@ kropfj@server:~/KeystoreDir$ keytool -import -file keycloak.chain -keypass secre
  "truststore" : "${jboss.server.config.dir}/root-ca.jks",
   "truststore-password" : "secret"
 
+-----------------------------------------------------
+für simple-fabric8
+	
+	    ein Wildfly Image mit SSL (und später mal Keycloak-Realm)
+	
+	
+		gegeben: das clint-ca Zertifikat
+		
+		ein Script für die Erstellung eines <name>.jks Server keystores
+		Parameter: name (als filename und als cn), eine extensions-datei (mit SAN dns Einträgen), passwort 
+	
+	
+
 
 
 
