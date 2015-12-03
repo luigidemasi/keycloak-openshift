@@ -103,7 +103,7 @@ objects:
       spec: 
         containers: 
         # - image: clinte/keycloak-openshift
-        - image: jboss/keycloak-ha-postgres
+        - image: jboss/keycloak-postgres
           name: keycloak-container
           ports: 
           - containerPort: 8080
