@@ -26,34 +26,34 @@ objects:
     #  type: ClusterIP
     sessionAffinity: None
  
-#- kind: Service
-#  apiVersion: v1
-#  metadata: 
-#    name: keycloak-http-service
-#    labels:
-#      app: keycloak-app
-#  spec: 
-#    ports: 
-#    - port: 80
-#      name: http
-#      protocol: TCP
-#      targetPort: 8080
-#    selector: 
-#      component: keycloak
-
 - kind: Service
   apiVersion: v1
   metadata: 
-    name: keycloak-https-service
+    name: keycloak-http-service
     labels:
       app: keycloak-app
   spec: 
     ports: 
-    - port: 443
+    - port: 80
+      name: http
       protocol: TCP
-      targetPort: 8443
+      targetPort: 8080
     selector: 
       component: keycloak
+
+#- kind: Service
+#  apiVersion: v1
+#  metadata: 
+#    name: keycloak-https-service
+#    labels:
+#      app: keycloak-app
+#  spec: 
+#    ports: 
+#    - port: 443
+#      protocol: TCP
+#      targetPort: 8443
+#    selector: 
+#      component: keycloak
 
 - kind: ReplicationController
   apiVersion: v1
@@ -102,13 +102,18 @@ objects:
           component: keycloak
       spec: 
         containers: 
-        - image: clinte/keycloak-openshift
+        # - image: clinte/keycloak-openshift
+        - image: jboss/keycloak-ha-postgres
           name: keycloak-container
           ports: 
           - containerPort: 8080
             name: http
           - containerPort: 8443
             name: https
+          - containerPort: 9990
+            name: admin
+          - containerPort: 9993
+            name: admins
           env:
             - name: POSTGRES_DATABASE
               value: keycloak
@@ -145,7 +150,7 @@ objects:
 #    path: "/auth" 
     to:
       kind: Service
-      name: keycloak-https-service
+      name: keycloak-http-service
     tls:
       termination: edge
       insecureEdgeTerminationPolicy: Redirect 
