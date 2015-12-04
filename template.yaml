@@ -101,8 +101,9 @@ objects:
         labels: 
           component: keycloak
       spec: 
-        containers: 
-        - image: clinte/keycloak-openshift
+        containers:
+        - image: jboss/keycloak-ha-postgres
+        #- image: clinte/keycloak-openshift
         # - image: jboss/keycloak-postgres
           name: keycloak-container
           ports: 
