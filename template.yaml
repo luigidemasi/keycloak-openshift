@@ -154,6 +154,7 @@ objects:
       name: keycloak-http-service
     tls:
       termination: edge
+      # insecureEdgeTerminationPolicy: Allow
       insecureEdgeTerminationPolicy: Redirect 
       # keycloak.key:
       key: |
