@@ -6,13 +6,20 @@ MAINTAINER Clint Eastwool <clint.eastwool@gmail.com>
 ##ADD update-standalone-ha.xsl /opt/jboss/keycloak/
 ##RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml -xsl:/opt/jboss/keycloak/update-standalone-ha.xsl -o:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml; rm /opt/jboss/keycloak/update-standalone-ha.xsl
 
+ADD update-standalone-ha.xsl /opt/jboss/keycloak/
+RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml -xsl:/opt/jboss/keycloak/update-standalone-ha.xsl -o:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml; rm /opt/jboss/keycloak/update-standalone-ha.xsl
+
+ADD keycloak-server.json /opt/jboss/keycloak/standalone/configuration/
+ADD start.sh /opt/jboss/keycloak/bin/
+
+
 #USER root
 #RUN yum install -y mc && yum clean all
 #USER jboss
 #ENV TERM xterm
 
 # ADD keycloak-server.json /opt/jboss/keycloak/standalone/configuration/
-ADD start.sh /opt/jboss/keycloak/bin/
+# ADD start.sh /opt/jboss/keycloak/bin/
 # use import.json, previously obtained from a keycloak server, for initial realm(s)
 ADD import.json /opt/jboss/keycloak/
 # provide a self signed certificate
@@ -30,3 +37,21 @@ EXPOSE 9993
 ## CMD ["/opt/jboss/keycloak/bin/start.sh" "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
 
 CMD ["/opt/jboss/keycloak/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+
+
+
+----------------------
+FROM jboss/keycloak-postgres:latest
+
+ADD update-standalone-ha.xsl /opt/jboss/keycloak/
+RUN java -jar /usr/share/java/saxon.jar -s:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml -xsl:/opt/jboss/keycloak/update-standalone-ha.xsl -o:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml; rm /opt/jboss/keycloak/update-standalone-ha.xsl
+
+ADD keycloak-server.json /opt/jboss/keycloak/standalone/configuration/
+ADD start.sh /opt/jboss/keycloak/bin/
+
+USER root
+RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
+USER jboss
+
+CMD ["/opt/jboss/keycloak/bin/start.sh"]
+
