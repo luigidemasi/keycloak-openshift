@@ -26,7 +26,7 @@ ADD keycloak.jks /opt/jboss/keycloak/standalone/configuration/
 ADD root_ca.cer /opt/jboss/keycloak/standalone/configuration/
 
 USER root
-RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
+RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/standalone/configuration/keycloak-server.json
 USER jboss
 
 EXPOSE 8443
