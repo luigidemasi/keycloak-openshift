@@ -65,12 +65,12 @@
 
 	"login": 
 	{
-		"provider": "freemarker"
+		"provider": "keycloak"
 	},
 
 	"account": 
 	{
-		"provider": "freemarker"
+		"provider": "keycloak"
 	},
 
 	"email": 
