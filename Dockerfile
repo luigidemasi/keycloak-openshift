@@ -30,9 +30,9 @@ USER root
 RUN chmod 755 /opt/jboss/keycloak/bin/start.sh; chown jboss:jboss /opt/jboss/keycloak/bin/start.sh
 USER jboss
 
-EXPOSE 8443
-EXPOSE 9990
-EXPOSE 9993
+#EXPOSE 8443
+#EXPOSE 9990
+#EXPOSE 9993
 
 ## CMD ["/opt/jboss/keycloak/bin/start.sh" "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
 

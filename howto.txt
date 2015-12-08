@@ -84,7 +84,11 @@ für simple-fabric8
 		ein Script für die Erstellung eines <name>.jks Server keystores
 		Parameter: name (als filename und als cn), eine extensions-datei (mit SAN dns Einträgen), passwort 
 	
-	
+-------------------------------------------------------
+Docker mc installieren: 
+docker exec -it --user root <id> bash
+yum install mc
+export TERM=xterm 	
 
 
 
