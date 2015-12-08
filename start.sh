@@ -13,7 +13,7 @@ export POSTGRES_PORT_5432_TCP_PORT
 # exec /opt/jboss/keycloak/customization/execute.sh /opt/jboss/keycloak standalone standalone-ha.xml
 
 # the 'normal' start
-exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -bmanagement $HOSTNAME -u 230.0.0.4
+exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djavax.net.debug=SSL -Djboss.node.name=$HOSTNAME -b $HOSTNAME -bmanagement $HOSTNAME -u 230.0.0.4
 #exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b 0.0.0.0 -bmanagement 0.0.0.0 -u 230.0.0.4
 
 # use this for export
