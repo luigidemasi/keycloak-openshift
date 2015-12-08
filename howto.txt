@@ -92,7 +92,27 @@ export TERM=xterm
 
 
 
+<!-- 	<xsl:template match="//*[local-name()='management']/*[local-name()='security-realms']"> -->
+<!-- 		<xsl:copy> -->
+<!-- 			<xsl:apply-templates select="@*|node()" /> -->
+<!-- 			<xsl:copy-of copy-namespaces="no" select="$newRealm" /> -->
+<!-- 		</xsl:copy> -->
+<!-- 	</xsl:template> -->
+<!-- 	<xsl:template match="//*[local-name()='subsystem' and starts-with(namespace-uri(),$undertow)]">  
+<!-- 	<xsl:template match="//undertow:server[@name='default-server']"> -->
+<!-- 		<xsl:copy> -->
+<!-- 			<xsl:apply-templates select="node()|@*" /> -->
+<!-- 			<xsl:copy-of copy-namespaces="no" select="$newHttpsListener" /> -->
+<!-- 		</xsl:copy> -->
+<!-- 	</xsl:template> -->
 
+<!--  Add this -->
+<!-- <subsystem xmlns="urn:jboss:domain:undertow:2.0"> -->
+<!--     ... -->
+<!--     <http-listener name="default" socket-binding="http" -->
+<!--         proxy-address-forwarding="true" redirect-socket="proxy-https"/> -->
+<!--     ... -->
+<!-- </subsystem> -->
 
 
 
