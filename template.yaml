@@ -122,6 +122,8 @@ objects:
               value: keycloak
             - name: POSTGRES_PASSWORD
               value: password
+            - name: START
+              value: $STARTUP_MODE 
             
 #- kind: Route
 #  apiVersion: v1
