@@ -123,7 +123,7 @@ objects:
             - name: POSTGRES_PASSWORD
               value: password
             - name: START
-              value: $STARTUP_MODE 
+              value: ${STARTUP_MODE:-normal} 
             
 #- kind: Route
 #  apiVersion: v1

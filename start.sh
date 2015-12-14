@@ -10,6 +10,8 @@ export POSTGRES_PORT_5432_TCP_PORT
 
 mode="${STARTUP_MODE:-import}"
 
+echo "STARTUP_MODE: $STARTUP_MODE"
+
 case $mode in
     normal)
        	exec /opt/jboss/keycloak/bin/standalone.sh -c standalone-ha.xml -Djboss.node.name=$HOSTNAME -b $HOSTNAME -u 230.0.0.4
