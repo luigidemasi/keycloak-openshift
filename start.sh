@@ -8,8 +8,7 @@ fi
 export POSTGRES_PORT_5432_TCP_ADDR
 export POSTGRES_PORT_5432_TCP_PORT
 
-
-mode="import"
+mode="${STARTUP_MODE:-import}"
 
 case $mode in
     normal)
