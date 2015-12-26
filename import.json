@@ -1436,7 +1436,7 @@
     "enabled" : true,
     "clientAuthenticatorType" : "client-secret",
     "secret" : "928b0a09-dab9-4f73-966c-77109a5a61ab",
-    "redirectUris" : [ "http://wildfly-test.vagrant.f8" ],
+    "redirectUris" : [ "http://wildfly-test.vagrant.f8/*" ],
     "webOrigins" : [ "" ],
     "notBefore" : 0,
     "bearerOnly" : false,
